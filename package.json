@@ -1,0 +1,28 @@
+{
+  "name": "erd-wp_simply_share",
+  "version": "1.0.0",
+  "description": "A WP plugin to simply share on social networks made by ERDigital - Free to use and modify with mention of the author include commercial use",
+  "main": "erd-wp_simply_share.php",
+  "scripts": {
+    "test": "run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RElric/ERD-WP_SIMPLY_SHARE.git"
+  },
+  "keywords": [
+    "WP",
+    "WordPress",
+    "Social",
+    "networks",
+    "Sharing",
+    "ERDigital",
+    "ERD"
+  ],
+  "author": "ERDigital",
+  "license": "SEE LICENCE IN LICENCE",
+  "bugs": {
+    "url": "https://github.com/RElric/ERD-WP_SIMPLY_SHARE/issues"
+  },
+  "homepage": "https://github.com/RElric/ERD-WP_SIMPLY_SHARE#readme"
+}
