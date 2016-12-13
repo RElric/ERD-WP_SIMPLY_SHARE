@@ -1,2 +1,103 @@
 @import "compass/reset";
 @import "compass/css3";
+
+.erd_simply_share {
+  @include box-sizing(border-box);
+
+  position: relative;
+
+  &.erd_ss_vertical {
+    @include translateY(-50%);
+
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 75px;
+    width: 7.5rem;
+    z-index: 2;
+
+    > ul {
+      z-index: 2;
+
+      > li {
+        margin: 0;
+        z-index: 2;
+        margin-top: -1px;
+        margin-top: -.1rem;
+
+        > a {
+          z-index: 2;
+        }
+      }
+    }
+  }
+
+  > ul {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    > li {
+      @include box-sizing(border-box);
+
+      position: relative;
+      display: inline-block;
+      padding: 0;
+      margin: 0 2px;
+      margin: 0 .2rem;
+      max-width: 100%;
+      vertical-align: top;
+      overflow: hidden;
+
+      > a {
+        @include box-sizing(border-box);
+        @include single-transition(all, 0.3s);
+
+        width: 75px;
+        width: 7.5rem;
+        height: 75px;
+        height: 7.5rem;
+        color: #FFF;
+        text-decoration: none;
+        overflow: hidden;
+        display: inline-block;
+        vertical-align: top;
+
+        > .fa {
+          @include translate(-50%, -50%);
+
+          position: absolute;
+          top: 50%;
+          left: 50%;
+        }
+
+        &.twitter_btn {
+          background-color: #00ACED;
+        }
+
+        &.facebook_btn {
+          background-color: #3B5998;
+        }
+
+        &.linkedin_btn {
+          background-color: #0077B5;
+        }
+
+        &:hover {
+          &.twitter_btn {
+            background-color: darken(#00ACED, 5%);
+          }
+
+          &.facebook_btn {
+            background-color: darken(#3B5998, 5%);
+          }
+
+          &.linkedin_btn {
+            background-color: darken(#0077B5, 5%);
+          }
+        }
+      }
+    }
+  }
+}
