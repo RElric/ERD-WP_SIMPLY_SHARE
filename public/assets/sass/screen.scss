@@ -1,52 +1,134 @@
-@import "compass/css3";
+@import 'compass/css3';
 
+//Defining colors
+$twitter_color: #00aced;
+$fb_color: #3b5998;
+$lnkin_color: #0077b5;
+$broked_white: #eee;
+$white: #fff;
+
+//Main class which nest all the plugin
 .erd_simply_share {
   @include box-sizing(border-box);
 
+  align: left;
+  display: inline-block;
+  max-width: 100%;
   position: relative;
+  vertical-align: top;
 
+  //Settings inline display which is default 
+  > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    > li {
+      @include box-sizing(border-box);
+
+      display: inline-block;
+      margin: 0 2px;
+      margin: 0 .2rem;
+      max-width: 100%;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      vertical-align: top;
+
+      > a {
+        @include box-sizing(border-box);
+        @include single-transition(all, 0.3s);
+
+        color: $white;
+        display: inline-block;
+        overflow: hidden;
+        text-decoration: none;
+        vertical-align: top;
+
+        > .fa {
+          @include translate(-50%, -50%);
+
+          left: 50%;
+          position: absolute;
+          top: 50%;
+        }
+
+        &.twitter_btn {
+          background-color: $twitter_color;
+        }
+
+        &.facebook_btn {
+          background-color: $fb_color;
+        }
+
+        &.linkedin_btn {
+          background-color: $lnkin_color;
+        }
+
+        &:hover {
+          @include scale(1.5);
+
+          &.twitter_btn {
+            background-color: $broked_white;
+            color: $twitter_color;
+          }
+
+          &.facebook_btn {
+            background-color: $broked_white;
+            color: $fb_color;
+          }
+
+          &.linkedin_btn {
+            background-color: $broked_white;
+            color: $lnkin_color;
+          }
+        }
+      }
+    }
+  }
+
+  //While displaying fixed left
   &.erd_ss_vertical {
     @include translateY(-50%);
     @include box-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 
+    left: 0;
     position: fixed;
     top: 50%;
-    left: 0;
     z-index: 2;
 
+    //Wrap buttons by changing container width to fit with vertical display
     &.erd_ss_tiny {
       width: 25px;
       width: 2.5rem;
     }
-
     &.erd_ss_small {
       width: 50px;
       width: 5rem;
     }
-
     &.erd_ss_medium {
       width: 75px;
       width: 7.5rem;
     }
-
     &.erd_ss_big {
       width: 100px;
       width: 10rem;
     }
-
     &.erd_ss_huge {
       width: 125px;
       width: 12.5rem;
     }
 
+    //Adjusting displaying to be on-top of other elements
     > ul {
       z-index: 2;
 
       > li {
         margin: 0;
-        z-index: 2;
         margin-top: -1px;
         margin-top: -.1rem;
+        z-index: 2;
 
         > a {
           z-index: 2;
@@ -55,6 +137,7 @@
     }
   }
 
+  //Setting buttons sizes
   &.erd_ss_tiny > ul > li > a {
     width: 25px;
     width: 2.5rem;
@@ -66,7 +149,6 @@
       font-size: 1.2rem;
     }
   }
-
   &.erd_ss_small > ul > li > a {
     width: 50px;
     width: 5rem;
@@ -78,7 +160,6 @@
       font-size: 2rem;
     }
   }
-
   &.erd_ss_medium > ul > li > a {
     width: 75px;
     width: 7.5rem;
@@ -90,7 +171,6 @@
       font-size: 3.2rem;
     }
   }
-
   &.erd_ss_big > ul > li > a {
     width: 100px;
     width: 10rem;
@@ -102,7 +182,6 @@
       font-size: 5.5rem;
     }
   }
-
   &.erd_ss_huge > ul > li > a {
     width: 125px;
     width: 12.5rem;
@@ -112,76 +191,6 @@
     > .fa {
       font-size: 80px;
       font-size: 8rem;
-    }
-  }
-
-  > ul {
-    position: relative;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    > li {
-      @include box-sizing(border-box);
-
-      position: relative;
-      display: inline-block;
-      padding: 0;
-      margin: 0 2px;
-      margin: 0 .2rem;
-      max-width: 100%;
-      vertical-align: top;
-      overflow: hidden;
-
-      > a {
-        @include box-sizing(border-box);
-        @include single-transition(all, 0.3s);
-
-        color: #FFF;
-        text-decoration: none;
-        overflow: hidden;
-        display: inline-block;
-        vertical-align: top;
-
-        > .fa {
-          @include translate(-50%, -50%);
-
-          position: absolute;
-          top: 50%;
-          left: 50%;
-        }
-
-        &.twitter_btn {
-          background-color: #00ACED;
-        }
-
-        &.facebook_btn {
-          background-color: #3B5998;
-        }
-
-        &.linkedin_btn {
-          background-color: #0077B5;
-        }
-
-        &:hover {
-          @include scale(1.5);
-
-          &.twitter_btn {
-            background-color: #EEE;
-            color: #00ACED;
-          }
-
-          &.facebook_btn {
-            background-color: #EEE;
-            color: #3B5998;
-          }
-
-          &.linkedin_btn {
-            background-color: #EEE;
-            color: #0077B5;
-          }
-        }
-      }
     }
   }
 }
