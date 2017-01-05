@@ -1,4 +1,3 @@
-@import "compass/reset";
 @import "compass/css3";
 
 .erd_simply_share {
@@ -8,13 +7,37 @@
 
   &.erd_ss_vertical {
     @include translateY(-50%);
+    @include box-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 
     position: fixed;
     top: 50%;
     left: 0;
-    width: 75px;
-    width: 7.5rem;
     z-index: 2;
+
+    &.erd_ss_tiny {
+      width: 25px;
+      width: 2.5rem;
+    }
+
+    &.erd_ss_small {
+      width: 50px;
+      width: 5rem;
+    }
+
+    &.erd_ss_medium {
+      width: 75px;
+      width: 7.5rem;
+    }
+
+    &.erd_ss_big {
+      width: 100px;
+      width: 10rem;
+    }
+
+    &.erd_ss_huge {
+      width: 125px;
+      width: 12.5rem;
+    }
 
     > ul {
       z-index: 2;
@@ -29,6 +52,66 @@
           z-index: 2;
         }
       }
+    }
+  }
+
+  &.erd_ss_tiny > ul > li > a {
+    width: 25px;
+    width: 2.5rem;
+    height: 25px;
+    height: 2.5rem;
+
+    > .fa {
+      font-size: 12px;
+      font-size: 1.2rem;
+    }
+  }
+
+  &.erd_ss_small > ul > li > a {
+    width: 50px;
+    width: 5rem;
+    height: 50px;
+    height: 5rem;
+
+    > .fa {
+      font-size: 20px;
+      font-size: 2rem;
+    }
+  }
+
+  &.erd_ss_medium > ul > li > a {
+    width: 75px;
+    width: 7.5rem;
+    height: 75px;
+    height: 7.5rem;
+
+    > .fa {
+      font-size: 32px;
+      font-size: 3.2rem;
+    }
+  }
+
+  &.erd_ss_big > ul > li > a {
+    width: 100px;
+    width: 10rem;
+    height: 100px;
+    height: 10rem;
+
+    > .fa {
+      font-size: 55px;
+      font-size: 5.5rem;
+    }
+  }
+
+  &.erd_ss_huge > ul > li > a {
+    width: 125px;
+    width: 12.5rem;
+    height: 125px;
+    height: 12.5rem;
+
+    > .fa {
+      font-size: 80px;
+      font-size: 8rem;
     }
   }
 
@@ -54,10 +137,6 @@
         @include box-sizing(border-box);
         @include single-transition(all, 0.3s);
 
-        width: 75px;
-        width: 7.5rem;
-        height: 75px;
-        height: 7.5rem;
         color: #FFF;
         text-decoration: none;
         overflow: hidden;
@@ -85,16 +164,21 @@
         }
 
         &:hover {
+          @include scale(1.5);
+
           &.twitter_btn {
-            background-color: darken(#00ACED, 5%);
+            background-color: #EEE;
+            color: #00ACED;
           }
 
           &.facebook_btn {
-            background-color: darken(#3B5998, 5%);
+            background-color: #EEE;
+            color: #3B5998;
           }
 
           &.linkedin_btn {
-            background-color: darken(#0077B5, 5%);
+            background-color: #EEE;
+            color: #0077B5;
           }
         }
       }
