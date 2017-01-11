@@ -17,6 +17,6 @@ Simply share takes two parameters
 + size
  - tiny => 25px/25px
  - small => 50px/50px
- - medium => 75px/75px
+ - medium => 75px/75px | by default
  - big => 100px/100px
  - huge => 125px/125px
