@@ -199,8 +199,9 @@ $white: #fff;
 @media only screen and (max-width: 800px) {
   .erd_simply_share.erd_ss_vertical {
     @include translate(-50%, 0);
+    @include box-shadow(none);
 
-    width: auto !important;
+    width: 100% !important;
     top: auto;
     bottom: 0;
     left: 50%;
