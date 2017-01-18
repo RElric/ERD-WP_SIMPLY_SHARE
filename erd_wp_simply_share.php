@@ -25,6 +25,15 @@
   along with {Plugin Name}. If not, see {License URI}.
  */
 
+/**** Définition de la version du plugin (en interne) ****/
+if (!defined('ERD_SS_VERSION_KEY'))
+    define('ERD_SS_VERSION_KEY', 'erd_ss_version');
+
+if (!defined('ERD_SS_VERSION_NUM'))
+    define('ERD_SS_VERSION_NUM', '1.0.0');
+
+add_option(ERD_SS_VERSION_KEY, ERD_SS_VERSION_NUM);
+
 /**** Gestion de la BDD ****/
 require_once(dirname( __FILE__ ).'/erd_wp_simply_share-bdd.php');
 
@@ -38,6 +47,36 @@ function erd_ss_update_db_check() {
     }
 }
 add_action( 'plugins_loaded', 'erd_ss_update_db_check' );
+
+//Nouvelle version du plugin
+$new_version = '1.0.0';
+
+if (get_option(ERD_SS_VERSION_KEY) != $new_version) {
+    // Execute your upgrade logic here
+
+    // Then update the version value
+    update_option(ERD_SS_VERSION_KEY, $new_version);
+}
+
+//Ajout des paramètres
+function erd_ss_plugin_action_links($links, $file) {
+    static $this_plugin;
+
+    if (!$this_plugin) {
+        $this_plugin = plugin_basename(__FILE__);
+    }
+
+    if ($file == $this_plugin) {
+        // The "page" query string value must be equal to the slug
+        // of the Settings admin page we defined earlier, which in
+        // this case equals "erd_ss-settings".
+        $settings_link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/options-general.php?page=erd_wp_simply_share">Réglages</a>';
+        array_unshift($links, $settings_link);
+    }
+
+    return $links;
+}
+add_filter('plugin_action_links', 'erd_ss_plugin_action_links', 10, 2);
 
 //Ajoute les tables si elles n'existent pas et nettoie les permaliens
 function erd_simply_share_activation() {
