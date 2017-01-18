@@ -26,7 +26,7 @@
  */
 
 /**** Gestion de la BDD ****/
-  require_once(dirname( __FILE__ ).'/erd_wp_simply_share-bdd.php');
+require_once(dirname( __FILE__ ).'/erd_wp_simply_share-bdd.php');
 
 /**** HOOK de MAJ, d'activation, de désactivation et de suppression ****/
 //MAJ du plugin

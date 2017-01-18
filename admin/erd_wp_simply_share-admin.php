@@ -54,8 +54,7 @@ function erd_wp_simply_share_page_html() {
 }
 
 //Enregistrement de la page d'admin
-function erd_wp_simply_share_options_page()
-{
+function erd_wp_simply_share_options_page() {
     add_submenu_page(
         'options-general.php',
         'ERD Simply Share',
