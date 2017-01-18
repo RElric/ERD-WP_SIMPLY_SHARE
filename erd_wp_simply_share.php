@@ -25,19 +25,41 @@
   along with {Plugin Name}. If not, see {License URI}.
  */
 
-/**** Gestion de l'installation et de la désinstallation ****/
-//MAJ des permaliens à l'activation
-function erd_simply_share_activation()
-{
+/**** Gestion de la BDD ****/
+  require_once(dirname( __FILE__ ).'/erd_wp_simply_share-bdd.php');
+
+/**** HOOK de MAJ, d'activation, de désactivation et de suppression ****/
+//MAJ du plugin
+function erd_ss_update_db_check() {
+    global $erd_ss_db_version;
+    if ( get_site_option( 'erd_ss_db_version' ) != $erd_ss_db_version ) {
+        erd_ss_update();
+        erd_ss_install_data();
+    }
+}
+add_action( 'plugins_loaded', 'erd_ss_update_db_check' );
+
+//Ajoute les tables si elles n'existent pas et nettoie les permaliens
+function erd_simply_share_activation() {
+    erd_ss_install();
+    erd_ss_install_data();
     flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'erd_simply_share_activation' );
 
-function erd_simply_share_deactivation()
-{
+//Nettoie les permaliens
+function erd_simply_share_deactivation() {
     flush_rewrite_rules();
 }
 register_deactivation_hook( __FILE__, 'erd_simply_share_deactivation' );
+
+function erd_simply_share_uninstallation() {
+    $erd_ss_db_version = "erd_ss_db_version";
+    delete_option($erd_ss_db_version);
+
+    global $wpdb;
+    $wpdb->query('DROP TABLE IF EXISTS '.$wpdb->prefix.'erd_simply_share');
+}
 
 
 /**** Partie administration (Back Office) ****/
@@ -47,4 +69,3 @@ endif;
 
 /**** Partie utilisateur (Front-Office) ****/
 require_once(dirname( __FILE__ ).'/public/erd_wp_simply_share-public.php');
-
